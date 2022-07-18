@@ -2,27 +2,14 @@
 
 def solution(id_list, report, k):
     answer = [0] * len(id_list)
-    cnt = {}                # report count
-    check = {}              # personal report
     report = set(report)
+    reports = {x : 0 for x in id_list}
     
-    for row in report:
-        key, value = row.split(' ')
+    for r in report:
+        reports[r.split()[1]] += 1
+    
+    for r in report:
+        if reports[r.split()[1]] >= k:
+            answer[id_list.index(r.split()[0])] += 1
         
-        if value in cnt:
-            cnt[value] += 1
-        else:
-            cnt[value] = 1
-            
-        if key not in check:
-            check[key] = [value]
-        else:
-            check[key] += [value]
-            
-    for key, value in cnt.items():
-        if value >= k:
-            for fromId, toId in check.items():
-                if key in toId:
-                    answer[id_list.index(fromId)] += 1
-            
     return answer
