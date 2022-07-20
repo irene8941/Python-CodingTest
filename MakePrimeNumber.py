@@ -5,13 +5,14 @@ import math
 
 def solution(nums):
     sets = list(combinations(nums, 3))
-    answer = len(sets)
+    answer = 0
     
     for s in sets:
         sumSet = sum(s)
         for i in range(2, int(math.sqrt(sumSet)) + 1):
             if sumSet % i == 0:
-                answer -= 1
                 break
+        else: 
+            answer += 1
 
     return answer
