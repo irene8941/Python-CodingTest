@@ -4,7 +4,6 @@ from itertools import combinations
 import math
 
 def solution(nums):
-    nums.sort()
     sets = list(combinations(nums, 3))
     answer = len(sets)
     
