@@ -2,14 +2,8 @@
 
 def solution(d, budget):
     d.sort()
-    cnt = [0] * (len(d) + 1)
     
-    if d[0] <= budget:
-        cnt[1] = 1
+    while sum(d) > budget:
+        d.pop()
     
-    for i in range(1, len(d)):
-        if d[i - 1] + d[i] <= budget:
-            d[i] += d[i - 1]
-            cnt[i + 1] += cnt[i] + 1
-    
-    return max(cnt)
+    return len(d)
