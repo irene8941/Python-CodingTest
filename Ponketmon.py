@@ -3,6 +3,4 @@
 from itertools import combinations
 
 def solution(nums):
-    numsSetLen = len(set(nums))
-    numsLenHalf = len(nums) // 2
-    return numsSetLen if numsLenHalf > numsSetLen else numsLenHalf
+    return min(len(nums) // 2, len(set(nums)))
