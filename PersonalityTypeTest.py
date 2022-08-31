@@ -1,27 +1,23 @@
-# https://school.programmers.co.kr/learn/courses/30/lessons/118666?language=python3
-
 def solution(survey, choices):
-    scores = [0, 3, 2, 1, 0, 1, 2, 3]
-    charr = ['R', 'T', 'C', 'F', 'J', 'M', 'A', 'N']
-    labes =  {c: 0 for c in charr}
+    scorArr = [0, 3, 2, 1, 0, 1, 2, 3]
+    charArr = ['R', 'T', 'C', 'F', 'J', 'M', 'A', 'N']
+    tbl =  {c: 0 for c in charArr}
     
     for s, c in zip(survey, choices):
-        if c == 4:
-            continue
-        elif c < 4:
-            labes[s[0]] += scores[c]
+        if c < 4:
+            tbl[s[0]] += scorArr[c]
         else:
-            labes[s[1]] += scores[c]
+            tbl[s[1]] += scorArr[c]
     
     answer = ""
-    for i in range(0, len(charr), 2):
-        now = charr[i:i+2]
-        if labes[now[0]] == labes[now[-1]]:
-            answer += sorted(now)[0]
-        elif labes[now[0]] > labes[now[-1]]:
-            answer += charr[i]
+    for i in range(0, len(charArr), 2):
+        left = charArr[i]
+        right = charArr[i+1]
+        
+        if tbl[left] == tbl[right]:
+            answer += min(left, right)
         else:
-            answer += charr[i+1]
+            answer += left if tbl[left] > tbl[right] else right
 
     return answer
             
