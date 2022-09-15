@@ -1,13 +1,22 @@
 # https://school.programmers.co.kr/learn/courses/30/lessons/43165
 
+from collections import deque
+
 def solution(numbers, target):
-    result = [0]
+    answer = 0
 
-    for n in numbers:
-        temp = []
-        for r in result:
-            temp.append(r - n)
-            temp.append(r + n)
-        result = temp
+    q = deque()
+    n = len(numbers)
+    q.append((numbers[0], 0))
+    q.append((-numbers[0], 0))
+    while q:
+        temp, idx = q.popleft()
+        idx += 1
+        if idx < n:
+            q.append((temp + numbers[idx], idx))
+            q.append((temp - numbers[idx], idx))
+        else:
+            if temp == target:
+                answer += 1
 
-    return result.count(target)
+    return answer
