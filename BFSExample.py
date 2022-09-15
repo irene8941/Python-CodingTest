@@ -10,7 +10,7 @@ def bfs(graph, start, visited):
     visited[start] = True
     # 큐가 빌 때까지 반복
     while queue:
-        v = deque.popleft()
+        v = queue.popleft()
         print(v, end = ' ')
         # 해당 원소와 연결된, 아직 방문하지 않은 원소들을 큐에 삽입
         for i in graph[v]:
