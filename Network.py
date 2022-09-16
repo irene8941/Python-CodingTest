@@ -8,11 +8,9 @@ def solution(n, computers):
         stack = [start]
         while stack:
             node = stack.pop()
-            if visited[node]:
-                continue
             visited[node] = True
             for j in range(n):
-                if computers[node][j] == 1:
+                if computers[node][j] == 1 and not visited[j]:
                     stack.append(j)
 
     for i in range(n):
