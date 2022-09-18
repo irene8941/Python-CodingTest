@@ -2,6 +2,4 @@
 
 def solution(s):
     arr=list(map(int, s.split()))
-    arr.sort()
-
-    return str(arr[0]) + " " + str(arr[len(arr) - 1])
+    return str(min(arr)) + " " + str(max(arr))
