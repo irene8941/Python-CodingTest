@@ -14,6 +14,8 @@ def solution(n, words):
     if len(arr) == len(words):
         return [0, 0]
     else:
-        person = n if (len(arr) + 1) % n == 0 else (len(arr) + 1) % n
-        turn = (len(arr) + 1) // n if (len(arr) + 1) % n == 0 else (len(arr) + 1) // n + 1
+        tmp = len(arr) + 1 # 탈락
+        tmpTurn, tmpPer = divmod(tmp, n)
+        turn = tmpTurn if tmpPer == 0 else tmpTurn + 1
+        person = n if tmpPer == 0  else tmpPer
         return [person, turn]
