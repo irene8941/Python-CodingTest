@@ -1,17 +1,19 @@
 # https://www.acmicpc.net/problem/2667
 
+from collections import deque
 def bfs(x, y):
     cnt = 0
-    queue = [(x, y)]
+    queue = deque([(x, y)])    # 큐
+    visited[x][y] = 1
     while queue:
-        x, y = queue.pop()
+        x, y = queue.popleft()
+        cnt += 1
         for i in range(4):
             nx, ny = x + dx[i], y + dy[i]
             # 지도를 벗어난 경우
             if nx < 0 or ny < 0 or nx >= N or ny >= N:
                 continue
             if graph[nx][ny] == 1 and visited[nx][ny] == 0:
-                cnt += 1
                 queue.append((nx, ny))
                 visited[nx][ny] = 1
     return cnt
