@@ -1,6 +1,5 @@
 from collections import deque
 
-# BFS 구현
 def bfs(x, y):
     queue = deque([(x, y)])
     graph[x][y] = 0
