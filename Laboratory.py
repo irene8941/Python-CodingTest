@@ -62,5 +62,4 @@ dy = [0, 0, -1, 1]
 # 안전 영역의 최대 크기
 answer = 0
 make_wall(0)
-
 print(answer)
